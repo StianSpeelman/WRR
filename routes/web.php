@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RecordController;
+use App\Http\Controllers\Admin\ShopController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'home');
+Route::get('shop', [ShopController::class, 'index']);
+Route::get('shop/{id}', [ShopController::class, 'show']);
 Route::view('contact-us', 'contact');
 Route::prefix('admin')->group(function () {
     Route::redirect('/', '/admin/records');
-    Route::get('records', 'Admin\RecordController@index');
+    Route::get('/records', [RecordController::class, 'index']);
 });
