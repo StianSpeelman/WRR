@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Record extends Model
 {
-    public function genres(): BelongsTo
+    public function genre()
     {
-        return $this->belongsTo('App\Models\Genre')->withDefault();
+        return $this->belongsTo(Genre::class);
     }
 }
